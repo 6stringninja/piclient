@@ -13,7 +13,16 @@ export abstract class ApiPostClient<TInput, TResult> {
     public abstract mapResult(resp: any, body: any): TResult;
     public post(bdy: TInput = this.body): void {
     //    console.log(bdy);
-        request.post(this.url, {
+    request.post({
+        url: this.url,
+        body:  bdy as any,
+        json: true
+      }, function(error, response, body){
+      console.log(body);
+      
+    });
+
+      /*  request.post(this.url, {
             json: bdy as any,
         }, (error, res, body) => {
             console.log(error);
@@ -33,5 +42,6 @@ export abstract class ApiPostClient<TInput, TResult> {
             console.log(body);
             console.log("success");
         });
+        */
     }
 }

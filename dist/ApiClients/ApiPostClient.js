@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var request = require('request');
 var rx_1 = require("rx");
-var ApiClientErrorMessage_1 = require("./ApiClientErrorMessage");
 var ApiPostClient = /** @class */ (function () {
     function ApiPostClient(url, body, errorCode, ApiClientErrorMessage) {
         if (url === void 0) { url = ''; }
@@ -18,29 +17,36 @@ var ApiPostClient = /** @class */ (function () {
         this.error$ = rx_1.Observable.create(function (obse) { return (_this.observererror = obse); });
     }
     ApiPostClient.prototype.post = function (bdy) {
-        var _this = this;
         if (bdy === void 0) { bdy = this.body; }
         //    console.log(bdy);
-        request.post(this.url, {
-            json: bdy,
-        }, function (error, res, body) {
-            console.log(error);
-            console.log(res);
+        request.post({
+            url: this.url,
+            body: bdy,
+            json: true
+        }, function (error, response, body) {
             console.log(body);
-            if (error) {
-                console.error(error);
-                if (_this.observererror) {
-                    _this.observererror.onNext(new ApiClientErrorMessage_1.ApiClientErrorMessage(_this.errorCode, _this.ApiClientErrorMessage, error));
-                }
-                return;
-            }
-            if (_this.observer) {
-                _this.observer.onNext(_this.mapResult(res, body));
-            }
-            //  console.log(`statusCode: ${res.statusCode}`);
-            console.log(body);
-            console.log("success");
         });
+        /*  request.post(this.url, {
+              json: bdy as any,
+          }, (error, res, body) => {
+              console.log(error);
+              console.log(res);
+              console.log(body);
+              if (error) {
+                  console.error(error);
+                  if (this.observererror) {
+                      this.observererror.onNext(new ApiClientErrorMessage(this.errorCode, this.ApiClientErrorMessage, error));
+                  }
+                  return;
+              }
+              if (this.observer) {
+                  this.observer.onNext(this.mapResult(res, body));
+              }
+              //  console.log(`statusCode: ${res.statusCode}`);
+              console.log(body);
+              console.log("success");
+          });
+          */
     };
     return ApiPostClient;
 }());
