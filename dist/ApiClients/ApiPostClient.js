@@ -24,6 +24,9 @@ var ApiPostClient = /** @class */ (function () {
         request.post(this.url, {
             json: bdy,
         }, function (error, res, body) {
+            console.log(error);
+            console.log(res);
+            console.log(body);
             if (error) {
                 console.error(error);
                 if (_this.observererror) {
