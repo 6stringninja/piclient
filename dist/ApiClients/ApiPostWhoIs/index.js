@@ -22,14 +22,14 @@ var ApiPostWhoInput = /** @class */ (function () {
     return ApiPostWhoInput;
 }());
 exports.ApiPostWhoInput = ApiPostWhoInput;
-var ApiGetPiMonitor = /** @class */ (function (_super) {
-    __extends(ApiGetPiMonitor, _super);
-    function ApiGetPiMonitor() {
+var ApiPostWhoIsClient = /** @class */ (function (_super) {
+    __extends(ApiPostWhoIsClient, _super);
+    function ApiPostWhoIsClient() {
         return _super.call(this, clientConfig_1.clientConfig.apiServerWhoUrl) || this;
     }
-    ApiGetPiMonitor.prototype.mapResult = function (resp, body) {
+    ApiPostWhoIsClient.prototype.mapResult = function (resp, body) {
         return { success: true };
     };
-    return ApiGetPiMonitor;
+    return ApiPostWhoIsClient;
 }(ApiPostClient_1.ApiPostClient));
-exports.ApiGetPiMonitor = ApiGetPiMonitor;
+exports.ApiPostWhoIsClient = ApiPostWhoIsClient;

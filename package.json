@@ -9,10 +9,11 @@
     "lintapi": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "serverapi": "tsc  -p src -w",
     "clientapi": "tsc  -p src-api\\client -w",
-    "launchserver": "nodemon dist\\server\\server.js",
+ 
     "launchclient": "nodemon dist\\client\\client.js",
     "launchclients": "nodemon dist\\client\\clients.js",
-    "launchapp": "nodemon dist\\app.js"
+    "launchapp": "nodemon dist\\app.js",
+    "launchserver": "nodemon dist\\server.js"
   },
   "author": "",
   "license": "ISC",

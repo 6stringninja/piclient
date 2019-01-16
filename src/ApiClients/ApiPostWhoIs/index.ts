@@ -12,7 +12,7 @@ export class ApiPostWhoInput{
        
     }
 }
-export class ApiGetPiMonitor extends ApiPostClient<ApiPostWhoInput,ApiPostWhoResult>{
+export class ApiPostWhoIsClient extends ApiPostClient<ApiPostWhoInput,ApiPostWhoResult>{
     public mapResult(resp: any, body: any): ApiPostWhoResult {
         return {success:true} as ApiPostWhoResult;
     }
