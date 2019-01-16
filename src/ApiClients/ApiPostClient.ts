@@ -18,8 +18,20 @@ export abstract class ApiPostClient<TInput, TResult> {
         body:  bdy as any,
         json: true
       }, function(error, response, body){
-      console.log(body);
-      
+   
+      if (error) {
+        console.error(error);
+        if (this.observererror) {
+            this.observererror.onNext(new ApiClientErrorMessage(this.errorCode, this.ApiClientErrorMessage, error));
+        }
+        return;
+    }
+    if (this.observer) {
+        this.observer.onNext(this.mapResult(response, body));
+    }
+    //  console.log(`statusCode: ${res.statusCode}`);
+    console.log(body);
+    console.log("success");
     });
 
       /*  request.post(this.url, {

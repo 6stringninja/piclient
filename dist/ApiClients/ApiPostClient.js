@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var request = require('request');
 var rx_1 = require("rx");
+var ApiClientErrorMessage_1 = require("./ApiClientErrorMessage");
 var ApiPostClient = /** @class */ (function () {
     function ApiPostClient(url, body, errorCode, ApiClientErrorMessage) {
         if (url === void 0) { url = ''; }
@@ -24,7 +25,19 @@ var ApiPostClient = /** @class */ (function () {
             body: bdy,
             json: true
         }, function (error, response, body) {
+            if (error) {
+                console.error(error);
+                if (this.observererror) {
+                    this.observererror.onNext(new ApiClientErrorMessage_1.ApiClientErrorMessage(this.errorCode, this.ApiClientErrorMessage, error));
+                }
+                return;
+            }
+            if (this.observer) {
+                this.observer.onNext(this.mapResult(response, body));
+            }
+            //  console.log(`statusCode: ${res.statusCode}`);
             console.log(body);
+            console.log("success");
         });
         /*  request.post(this.url, {
               json: bdy as any,

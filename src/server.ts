@@ -26,7 +26,7 @@ app.post('/who', (req, res) => {
   if (true  ) {
   console.log(wi);
 
-  //  res.send({ success:true);
+    res.send({ success:true});
    
   } else {
     console.log('bad hash');
