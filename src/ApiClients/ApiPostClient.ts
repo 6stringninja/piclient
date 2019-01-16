@@ -12,7 +12,7 @@ export abstract class ApiPostClient<TInput, TResult> {
     }
     public abstract mapResult(resp: any, body: any): TResult;
     public post(bdy: TInput = this.body): void {
-         console.log(bdy);
+    //    console.log(bdy);
         request.post(this.url, {
             json: bdy as any,
         }, (error, res, body) => {
@@ -28,6 +28,7 @@ export abstract class ApiPostClient<TInput, TResult> {
             }
             //  console.log(`statusCode: ${res.statusCode}`);
             console.log(body);
+            console.log("success");
         });
     }
 }

@@ -20,7 +20,7 @@ var ApiPostClient = /** @class */ (function () {
     ApiPostClient.prototype.post = function (bdy) {
         var _this = this;
         if (bdy === void 0) { bdy = this.body; }
-        console.log(bdy);
+        //    console.log(bdy);
         request.post(this.url, {
             json: bdy,
         }, function (error, res, body) {
@@ -36,6 +36,7 @@ var ApiPostClient = /** @class */ (function () {
             }
             //  console.log(`statusCode: ${res.statusCode}`);
             console.log(body);
+            console.log("success");
         });
     };
     return ApiPostClient;
