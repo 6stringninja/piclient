@@ -27,7 +27,7 @@ export abstract class ApiPostClient<TInput, TResult> {
                 this.observer.onNext(this.mapResult(res, body));
             }
             //  console.log(`statusCode: ${res.statusCode}`);
-            // console.log(body);
+            console.log(body);
         });
     }
 }

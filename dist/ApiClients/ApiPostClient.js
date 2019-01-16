@@ -35,7 +35,7 @@ var ApiPostClient = /** @class */ (function () {
                 _this.observer.onNext(_this.mapResult(res, body));
             }
             //  console.log(`statusCode: ${res.statusCode}`);
-            // console.log(body);
+            console.log(body);
         });
     };
     return ApiPostClient;
