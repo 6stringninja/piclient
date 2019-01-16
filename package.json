@@ -1,0 +1,35 @@
+{
+  "name": "piclient",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testapi": "echo \"Error: no test specified\" && exit 1",
+    "lintapi": "tslint -c tslint.json 'src/**/*.ts' --fix",
+    "serverapi": "tsc  -p src -w",
+    "clientapi": "tsc  -p src-api\\client -w",
+    "launchserver": "nodemon dist\\server\\server.js",
+    "launchclient": "nodemon dist\\client\\client.js",
+    "launchclients": "nodemon dist\\client\\clients.js",
+    "launchapp": "nodemon dist\\app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "nodemon": "^1.18.9",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.2",
+    "@types/rx": "^4.1.1",
+    "child-process-promise": "^2.2.1",
+    "child_process": "^1.0.2"
+  },
+  "dependencies": {
+    "@types/request": "^2.48.1",
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "rx": "^4.1.0",
+    "rxjs": "^6.3.3"
+  }
+}
