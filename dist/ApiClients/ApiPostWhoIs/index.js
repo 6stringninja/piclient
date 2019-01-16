@@ -28,6 +28,8 @@ var ApiPostWhoIsClient = /** @class */ (function (_super) {
         return _super.call(this, clientConfig_1.clientConfig.apiServerWhoUrl) || this;
     }
     ApiPostWhoIsClient.prototype.mapResult = function (resp, body) {
+        console.log(resp.body);
+        console.log("api post res");
         return { success: true };
     };
     return ApiPostWhoIsClient;

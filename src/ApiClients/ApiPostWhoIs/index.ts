@@ -14,6 +14,8 @@ export class ApiPostWhoInput{
 }
 export class ApiPostWhoIsClient extends ApiPostClient<ApiPostWhoInput,ApiPostWhoResult>{
     public mapResult(resp: any, body: any): ApiPostWhoResult {
+        console.log(resp.body);
+        console.log("api post res");
         return {success:true} as ApiPostWhoResult;
     }
   
