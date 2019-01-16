@@ -5,7 +5,7 @@ var ApiPostWhoIs_1 = require("./ApiClients/ApiPostWhoIs");
 var clientTest = new index_1.ApiGetPiMonitor();
 var clientPost = new ApiPostWhoIs_1.ApiPostWhoIsClient();
 var lastResult;
-clientTest.result$.subscribe(function (r) { return console.log(r); });
+clientTest.result$.subscribe(function (r) { console.log(r); lastResult = r; });
 clientTest.error$.subscribe(function (r) { return console.warn(r); });
 clientPost.result$.subscribe(function (r) { return console.log(r); });
 clientPost.error$.subscribe(function (r) { return console.warn(r); });

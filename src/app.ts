@@ -5,7 +5,7 @@ import { ApiPostWhoIsClient, ApiPostWhoInput } from "./ApiClients/ApiPostWhoIs";
 const clientTest = new ApiGetPiMonitor();
 const clientPost = new ApiPostWhoIsClient();
 let lastResult:ApiGetPiMonitorResult;
-clientTest.result$.subscribe( r => console.log(r));
+clientTest.result$.subscribe( r => {console.log(r); lastResult=r;});
 clientTest.error$.subscribe( r => console.warn(r));
 clientPost.result$.subscribe(r=> console.log(r));
 clientPost.error$.subscribe(r=> console.warn(r));
