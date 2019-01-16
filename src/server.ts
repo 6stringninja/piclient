@@ -22,8 +22,10 @@ app.get('/who', (req: express.Request, res: express.Response) => {
 });
 app.post('/who', (req, res) => {
   const wi = req.body as ApiPostWhoInput;
+  console.log("received");
   if (true  ) {
   console.log(wi);
+
   //  res.send({ success:true);
    
   } else {

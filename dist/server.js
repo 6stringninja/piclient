@@ -19,6 +19,7 @@ app.get('/who', function (req, res) {
 });
 app.post('/who', function (req, res) {
     var wi = req.body;
+    console.log("received");
     if (true) {
         console.log(wi);
         //  res.send({ success:true);
