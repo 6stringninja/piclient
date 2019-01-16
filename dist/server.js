@@ -1,8 +1,7 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 // lib/app.ts
-var express = require("express");
-// Create a new express application instance
+var express = require('express');
 var app = express();
 app.use(express.json());
 app.get('/', function (req, res) {
@@ -44,3 +43,4 @@ function dosomething() {
 }
 exports.dosomething = dosomething;
 dosomething();
+//# sourceMappingURL=server.js.map

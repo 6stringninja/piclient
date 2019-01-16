@@ -1,6 +1,7 @@
 import { ApiGetPiMonitor, ApiGetPiMonitorInput, ApiGetPiMonitorResult } from "./ApiClients/ApiGetPiMonitor/index";
 import { ApiPostClient } from "./ApiClients/ApiPostClient";
-import { ApiPostWhoIsClient, ApiPostWhoInput } from "./ApiClients/ApiPostWhoIs";
+import { ApiPostWhoIsClient, ApiPostWhoInput } from './ApiClients/ApiPostWhoIs/index';
+ 
 
 const clientTest = new ApiGetPiMonitor();
 const clientPost = new ApiPostWhoIsClient();

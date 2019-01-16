@@ -12,8 +12,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var clientConfig_1 = require("../../clientConfig");
+exports.__esModule = true;
+var clientConfig_1 = require("../../Client/clientConfig");
 var ApiPostClient_1 = require("../ApiPostClient");
 var ApiPostWhoInput = /** @class */ (function () {
     function ApiPostWhoInput(piMonitor) {
@@ -35,3 +35,4 @@ var ApiPostWhoIsClient = /** @class */ (function (_super) {
     return ApiPostWhoIsClient;
 }(ApiPostClient_1.ApiPostClient));
 exports.ApiPostWhoIsClient = ApiPostWhoIsClient;
+//# sourceMappingURL=index.js.map

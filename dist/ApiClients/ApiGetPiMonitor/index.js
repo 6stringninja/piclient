@@ -12,9 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var ApiBase_1 = require("../ApiBase");
-var clientConfig_1 = require("../../clientConfig");
+var clientConfig_1 = require("../../Client/clientConfig");
 var ApiGetPiMonitorInput = /** @class */ (function () {
     function ApiGetPiMonitorInput(_) {
         if (_ === void 0) { _ = 1; }
@@ -38,3 +38,4 @@ var ApiGetPiMonitor = /** @class */ (function (_super) {
     return ApiGetPiMonitor;
 }(ApiBase_1.ApiGetClient));
 exports.ApiGetPiMonitor = ApiGetPiMonitor;
+//# sourceMappingURL=index.js.map

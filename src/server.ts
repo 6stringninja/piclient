@@ -1,26 +1,28 @@
 // lib/app.ts
-import express = require('express');
+const express = require('express');
 import { request } from 'http';
-import { ApiPostWhoInput } from './ApiClients/ApiPostWhoIs';
+import { ApiPostWhoInput } from './ApiClients/ApiPostWhoIs/index';
+ 
+ 
+const app = express();
 
-// Create a new express application instance
-const app: express.Application = express();
+ 
 
 app.use(express.json());
 
-app.get('/', (req: express.Request, res: express.Response) => {
+app.get('/', (req: any , res: any) => {
   res.send('Hello World!');
 });
-app.get('/api/sh', (req: express.Request, res: express.Response) => {
+app.get('/api/sh', (req: any , res: any) => {
  // res.send(clientlist);
 });
-app.get('/who', (req: express.Request, res: express.Response) => {
+app.get('/who', (req: any , res: any) => {
   console.log(req);
   res.send({
    // ip: { data: new ServerOs().Ips()[0].ip, clients: clients.map(m => m.name) }
   });
 });
-app.post('/who', (req, res) => {
+app.post('/who', (req:any, res:any) => {
   const wi = req.body as ApiPostWhoInput;
   console.log("received");
   if (true  ) {
@@ -32,7 +34,7 @@ app.post('/who', (req, res) => {
     console.log('bad hash');
   }
 });
-app.get('/clients', (req: express.Request, res: express.Response) => {
+app.get('/clients', (req: any , res: any) => {
  // console.log(clients);
  // res.send(clients);
 });

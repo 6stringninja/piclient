@@ -1,7 +1,8 @@
 import { ApiGetClient } from "../ApiBase";
-import { clientConfig } from "../../clientConfig";
-import { ApiGetPiMonitorResult } from "../ApiGetPiMonitor";
+import { clientConfig } from "../../Client/clientConfig";
+ 
 import { ApiPostClient } from "../ApiPostClient";
+import { ApiGetPiMonitorResult } from '../ApiGetPiMonitor/index';
 export interface ApiPostWhoResult {
    success :boolean;
   }

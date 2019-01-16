@@ -1,5 +1,5 @@
 import { ApiGetClient } from "../ApiBase";
-import { clientConfig } from "../../clientConfig";
+import { clientConfig } from "../../Client/clientConfig";
 export interface ApiGetPiMonitorResult {
     coolingstate: string;
     cpu_frequency: string;

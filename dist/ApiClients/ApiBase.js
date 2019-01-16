@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var request = require('request');
 var rx_1 = require("rx");
 var ApiClientErrorMessage_1 = require("./ApiClientErrorMessage");
@@ -38,3 +38,4 @@ var ApiGetClient = /** @class */ (function () {
     return ApiGetClient;
 }());
 exports.ApiGetClient = ApiGetClient;
+//# sourceMappingURL=ApiBase.js.map

@@ -17,7 +17,7 @@ export abstract class ApiPostClient<TInput, TResult> {
         url: this.url,
         body:  bdy as any,
         json: true
-      }, function(error, response, body){
+      }, function(error:any, response:any, body:any){
    
       if (error) {
         console.error(error);
