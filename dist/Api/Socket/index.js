@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
+var serverConfig_1 = require("../../Server/serverConfig");
 var SocketSuccess;
 (function (SocketSuccess) {
     SocketSuccess[SocketSuccess["failed"] = 0] = "failed";
@@ -22,7 +23,7 @@ var SocketSuccess;
 })(SocketSuccess = exports.SocketSuccess || (exports.SocketSuccess = {}));
 var SocketMessage = /** @class */ (function () {
     function SocketMessage() {
-        this.date = new Date;
+        this.date = new Date();
     }
     return SocketMessage;
 }());
@@ -53,8 +54,9 @@ var SocketMessageHandler = /** @class */ (function () {
         this.channel = channel;
         this.secured = secured;
     }
-    SocketMessageHandler.prototype.execute = function (input, hash) {
-        if (!this.secured || (this.secured && hash === input.hash)) {
+    SocketMessageHandler.prototype.execute = function (input) {
+        console.log({ input: input, secured: this.secured, inputhash: input.hash });
+        if (!this.secured || (this.secured && serverConfig_1.serverConfig.serverHash === input.hash)) {
             return this.process(input);
         }
         else {

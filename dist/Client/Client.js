@@ -28,6 +28,8 @@ ss.on("connect", function () {
         console.log(data);
     });
     ss.on(pingponghndlr.channel, function (data) {
+        var res = data;
+        res.trip = new Date().getTime() - res.recat;
         console.log(data);
     });
     ss.on('disconnect', function () { });

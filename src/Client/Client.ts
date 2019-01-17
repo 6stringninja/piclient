@@ -3,7 +3,7 @@ import * as io from 'socket.io-client';
  
 import { AuthSocketInput, AuthSocketHandler } from '../Api/Socket/Auth';
 import { SocketSuccess } from '../Api/Socket';
-import { PingPongSocketHandler, PingPongSocketInput } from '../Api/Socket/PingPong';
+import { PingPongSocketHandler, PingPongSocketInput, PingPongSocketResult, PingPongSocketResult } from '../Api/Socket/PingPong';
 import { clientConfig } from './clientConfig';
 const ss: SocketIOClient.Socket = io.connect(clientConfig.wsSeverUrl);
 
@@ -32,6 +32,8 @@ ss.on("connect", ()=>{
       console.log(data);
     });
     ss.on(pingponghndlr.channel, (data: any) => {
+        const res = data as PingPongSocketResult;
+        res.trip = new Date().getTime() - res.recat;
       console.log(data);
     });
     ss.on('disconnect',  () => {});

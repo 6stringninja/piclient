@@ -16,10 +16,11 @@ exports.__esModule = true;
 var index_1 = require("../index");
 var PingPongSocketInput = /** @class */ (function (_super) {
     __extends(PingPongSocketInput, _super);
-    function PingPongSocketInput(localhash, data) {
+    function PingPongSocketInput(hash, data) {
         var _this = _super.call(this, 'pingpong') || this;
-        _this.localhash = localhash;
+        _this.hash = hash;
         _this.data = data;
+        _this.sentat = new Date().getTime();
         return _this;
     }
     return PingPongSocketInput;
@@ -32,6 +33,8 @@ var PingPongSocketResult = /** @class */ (function (_super) {
         if (socketsucces === void 0) { socketsucces = index_1.SocketSuccess.unauth; }
         var _this = _super.call(this) || this;
         _this.hash = hash;
+        _this.recat = new Date().getTime();
+        _this.trip = 0;
         return _this;
     }
     return PingPongSocketResult;
@@ -43,7 +46,10 @@ var PingPongSocketHandler = /** @class */ (function (_super) {
         return _super.call(this, 'pingpong', true) || this;
     }
     PingPongSocketHandler.prototype.process = function (input) {
-        return new PingPongSocketResult('pingpong', index_1.SocketSuccess.success);
+        var ret = new PingPongSocketResult('pingpong', index_1.SocketSuccess.success);
+        ret.trip = ret.recat - input.sentat;
+        ret.recat = input.sentat;
+        return ret;
     };
     return PingPongSocketHandler;
 }(index_1.SocketMessageHandler));

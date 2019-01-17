@@ -7,7 +7,7 @@ import {
 import { serverConfig } from '../../../Server/serverConfig';
 
 export class AuthSocketInput extends SocketMessageInput {
-  constructor(public localhash: string, public data: any) {
+  constructor(public hash: string, public data: any) {
     super('auth');
   }
 }
@@ -25,9 +25,9 @@ export class AuthSocketHandler extends SocketMessageHandler<
     const result =  new AuthSocketResult(
      
     );
-    if( input.localhash === serverConfig.serverHash){
+    if( input.hash === serverConfig.serverHash){
         result.success = SocketSuccess.success;
-        result.hash = input.localhash;
+        result.hash = input.hash;
     }
     else{
         result.success = SocketSuccess.failed;
@@ -35,6 +35,6 @@ export class AuthSocketHandler extends SocketMessageHandler<
     return result;
   }
   constructor() {
-    super('auth');
+    super('auth',false);
   }
 }

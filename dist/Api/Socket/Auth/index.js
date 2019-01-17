@@ -17,9 +17,9 @@ var index_1 = require("../index");
 var serverConfig_1 = require("../../../Server/serverConfig");
 var AuthSocketInput = /** @class */ (function (_super) {
     __extends(AuthSocketInput, _super);
-    function AuthSocketInput(localhash, data) {
+    function AuthSocketInput(hash, data) {
         var _this = _super.call(this, 'auth') || this;
-        _this.localhash = localhash;
+        _this.hash = hash;
         _this.data = data;
         return _this;
     }
@@ -41,13 +41,13 @@ exports.AuthSocketResult = AuthSocketResult;
 var AuthSocketHandler = /** @class */ (function (_super) {
     __extends(AuthSocketHandler, _super);
     function AuthSocketHandler() {
-        return _super.call(this, 'auth') || this;
+        return _super.call(this, 'auth', false) || this;
     }
     AuthSocketHandler.prototype.process = function (input) {
         var result = new AuthSocketResult();
-        if (input.localhash === serverConfig_1.serverConfig.serverHash) {
+        if (input.hash === serverConfig_1.serverConfig.serverHash) {
             result.success = index_1.SocketSuccess.success;
-            result.hash = input.localhash;
+            result.hash = input.hash;
         }
         else {
             result.success = index_1.SocketSuccess.failed;

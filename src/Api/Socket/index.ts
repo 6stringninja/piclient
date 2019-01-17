@@ -1,58 +1,57 @@
-export enum SocketSuccess{
-    failed = 0,
-    success=1,
-    unauth=404,
-    other=999
+import { serverConfig } from '../../Server/serverConfig';
+
+export enum SocketSuccess {
+  failed = 0,
+  success = 1,
+  unauth = 404,
+  other = 999
 }
-export interface ISocketMessage  {
+export interface ISocketMessage {
   id: string;
- hash:string;
+  hash: string;
   date: Date;
 }
- 
-export interface ISocketMessageResult extends ISocketMessage { 
-    success: SocketSuccess;
-  
+
+export interface ISocketMessageResult extends ISocketMessage {
+  success: SocketSuccess;
 }
-export class SocketMessage implements ISocketMessage  {
-    hash: string;
+export class SocketMessage implements ISocketMessage {
+  hash: string;
   id: string;
-  date = new Date;
-   
+  date = new Date();
 }
-export class SocketMessageResult  extends SocketMessage
-  implements ISocketMessageResult  {
-    
- 
-    constructor(  public success = SocketSuccess.success ) {
-        super();
-    }
-}
-export interface ISocketMessageInput  extends ISocketMessage {
-  channel: string;
-}
-export class SocketMessageInput  extends SocketMessage
-  implements ISocketMessageInput  {
-  constructor(public channel: string ) {
+export class SocketMessageResult extends SocketMessage
+  implements ISocketMessageResult {
+  constructor(public success = SocketSuccess.success) {
     super();
   }
 }
-export interface   ISocketMessageHandler{
-    channel: string;
-    execute(input: any,hash:string): any;
+export interface ISocketMessageInput extends ISocketMessage {
+  channel: string;
+}
+export class SocketMessageInput extends SocketMessage
+  implements ISocketMessageInput {
+  constructor(public channel: string) {
+    super();
+  }
+}
+export interface ISocketMessageHandler {
+  channel: string;
+  execute(input: any, hash: string): any;
 }
 export abstract class SocketMessageHandler<
   TInput extends ISocketMessage,
-    TResult extends ISocketMessageResult
-    > implements ISocketMessageHandler{
-  constructor(public channel: string, public secured:boolean) {}
+  TResult extends ISocketMessageResult
+> implements ISocketMessageHandler {
+  constructor(public channel: string, public secured: boolean) {}
 
-  protected abstract process(input: TInput):  TResult    ;
-    execute(input: TInput, hash: string): ISocketMessageResult  {
-        if (!this.secured || (this.secured && hash===input.hash) )
-   {  return   this.process(input);}
-   else{
-       return {success: SocketSuccess.failed} as ISocketMessageResult
-   }
+  protected abstract process(input: TInput): TResult;
+  execute(input: TInput ): ISocketMessageResult {
+    console.log({input:input, secured: this.secured, inputhash: input.hash});
+    if (!this.secured || (this.secured && serverConfig.serverHash === input.hash)) {
+      return this.process(input);
+    } else {
+      return { success: SocketSuccess.failed } as ISocketMessageResult;
+    }
   }
 }
